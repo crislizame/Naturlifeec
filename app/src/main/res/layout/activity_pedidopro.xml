@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="net.grietainc.naturlife.PedidoproActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_pedidopro" />
+
+    <RelativeLayout
+        android:id="@+id/all_pb"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="1"
+        android:visibility="visible">
+
+        <ProgressBar
+            android:id="@+id/pb_nuevopro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:elevation="20dp"
+            android:indeterminate="true"
+            android:minHeight="150dp"
+            android:minWidth="150dp"
+            android:visibility="gone" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_pb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:alpha="0.4"
+            android:background="@color/Color_fondo"
+            android:visibility="invisible">
+
+        </android.support.v4.view.ViewPager>
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

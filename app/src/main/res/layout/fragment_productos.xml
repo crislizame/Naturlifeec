@@ -1,0 +1,230 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="net.grietainc.naturlife.fragment.ProductosFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <RelativeLayout
+        android:id="@+id/all_pb"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="1"
+        android:visibility="visible">
+
+        <ProgressBar
+            android:id="@+id/pb_nuevopro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:elevation="20dp"
+            android:indeterminate="true"
+            android:minHeight="150dp"
+            android:minWidth="150dp"
+            android:visibility="gone" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_pb"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.3"
+            android:background="@color/Color_fondo"
+            android:visibility="invisible">
+
+        </android.support.v4.view.ViewPager>
+    </RelativeLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10sp">
+
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="false"
+                android:text="NUEVO PRODUCTO"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_green_light"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/despro_edtxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView3"
+                android:layout_marginTop="11dp"
+                android:capitalize="characters"
+                android:ems="10"
+                android:hint="Descripción del Producto"
+                android:inputType="textMultiLine"
+                android:selectAllOnFocus="false"
+                android:singleLine="false"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/codlin_select"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/textView3"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/despro_edtxt"
+                android:layout_marginEnd="102dp"
+                android:layout_marginTop="15dp" />
+
+            <Spinner
+                android:id="@+id/prepro_select"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/codlin_select"
+                android:layout_marginLeft="0dp"
+                android:layout_toEndOf="@+id/medpro_select" />
+
+            <Spinner
+                android:id="@+id/medpro_select"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/codlin_select"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/codlin_select"
+                android:layout_marginTop="15dp" />
+
+            <Spinner
+                android:id="@+id/marpro_select"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/medpro_select"
+                android:layout_toEndOf="@+id/medpro_select" />
+
+            <EditText
+                android:id="@+id/costact_edtxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/medpro_select"
+                android:layout_marginTop="21dp"
+                android:layout_toStartOf="@+id/marpro_select"
+                android:ems="10"
+                android:hint="Costo Actual"
+                android:inputType="numberDecimal"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/pvp1_edtxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/pvp1_edtxt2"
+                android:layout_toEndOf="@+id/costact_edtxt"
+                android:ems="10"
+                android:hint="Precio Venta 1"
+                android:inputType="numberDecimal"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/pvp1_edtxt2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/costact_edtxt"
+                android:layout_marginTop="15dp"
+                android:layout_toStartOf="@+id/pvp1_edtxt"
+                android:ems="10"
+                android:hint="PVP2"
+                android:inputType="numberDecimal"
+                android:textAlignment="center" />
+
+            <Spinner
+                android:id="@+id/pais_select"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/pvp1_edtxt2"
+                android:layout_alignBottom="@+id/pvp1_edtxt"
+                android:layout_marginStart="13dp"
+                android:layout_toEndOf="@+id/pvp1_edtxt2"
+                android:entries="@array/countries" />
+
+            <Button
+                android:id="@+id/btn_ingproducto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imgProducto"
+                android:layout_marginEnd="13dp"
+                android:layout_marginTop="15dp"
+                android:layout_toStartOf="@+id/btn_scan"
+                android:text="Ingresar Producto"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imgProducto"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_alignStart="@+id/edt_codbarras"
+                android:layout_below="@+id/edt_regsan"
+                android:adjustViewBounds="false"
+                android:src="@android:drawable/ic_input_add" />
+
+            <TextView
+                android:id="@+id/textView33"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edt_regsan"
+                android:layout_marginTop="9dp"
+                android:layout_toEndOf="@+id/imgProducto"
+                android:text="Subir Imagen"
+                android:textAlignment="center"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/edt_codbarras"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/btn_ingproducto"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/pvp1_edtxt2"
+                android:ems="10"
+                android:hint="Codigo de Barras"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/edt_regsan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/imgProducto"
+                android:layout_below="@+id/edt_codbarras"
+                android:ems="10"
+                android:hint="Registro Sanitario"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/edt_stock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/edt_regsan"
+                android:layout_alignBottom="@+id/edt_regsan"
+                android:layout_toEndOf="@+id/edt_regsan"
+                android:ems="10"
+                android:hint="Stock"
+                android:inputType="number" />
+
+            <ImageButton
+                android:id="@+id/btn_scan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/edt_codbarras"
+                android:layout_toEndOf="@+id/codlin_select"
+                android:src="@drawable/ic_camera_alt_black_24dp" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+</FrameLayout>

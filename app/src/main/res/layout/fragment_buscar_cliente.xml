@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="16dp"
+                    android:text="Buscar Cliente"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/et_namerazon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/et_rucci"
+                    android:layout_marginTop="21dp"
+                    android:capitalize="characters"
+                    android:ems="10"
+                    android:hint="Nombre o Razon Social"
+                    android:inputType="textPersonName"
+                    android:selectAllOnFocus="true"
+                    android:textAlignment="center" />
+
+                <EditText
+                    android:id="@+id/et_rucci"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/textView15"
+                    android:layout_marginTop="9dp"
+                    android:capitalize="characters"
+                    android:ems="10"
+                    android:hint="RUC o CI"
+                    android:inputType="textPersonName"
+                    android:selectAllOnFocus="true"
+                    android:textAlignment="center" />
+
+                <Spinner
+                    android:id="@+id/sp_zona"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/textView15"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/et_namerazon"
+                    android:layout_marginEnd="66dp"
+                    android:layout_marginTop="20dp"
+                    android:dropDownWidth="match_parent" />
+
+                <Spinner
+                    android:id="@+id/sp_tipoo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignStart="@+id/textView15"
+                    android:layout_alignTop="@+id/sp_zona"
+                    android:layout_marginStart="66dp"
+                    android:dropDownWidth="match_parent" />
+
+                <Spinner
+                    android:id="@+id/sp_ciudado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/sp_zona"
+                    android:layout_marginTop="20dp"
+                    android:dropDownWidth="match_parent" />
+
+                <Button
+                    android:id="@+id/btn_buscador"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/sp_ciudado"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/bordebotton"
+                    android:elevation="5dp"
+                    android:text="Buscar" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+    <RelativeLayout
+        android:id="@+id/all_pb"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="1"
+        android:visibility="visible">
+
+        <ProgressBar
+            android:id="@+id/pb_nuevopro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:elevation="20dp"
+            android:indeterminate="true"
+            android:minHeight="150dp"
+            android:minWidth="150dp"
+            android:visibility="gone" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_pb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:alpha="0.4"
+            android:background="@color/Color_fondo"
+            android:visibility="invisible">
+
+        </android.support.v4.view.ViewPager>
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_behavior="@string/bottom_sheet_behavior">
+
+
+
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

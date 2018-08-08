@@ -1,0 +1,192 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="net.grietainc.naturlife.fragment.AddClienteFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="11dp"
+                android:text="Añadir Cliente"
+                android:textAlignment="textEnd"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/et_razon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView13"
+                android:layout_marginTop="13dp"
+                android:ems="10"
+                android:hint="Razon Social o Nombre"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/et_rucc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/et_razon"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:hint="CI o RUC"
+                android:inputType="number"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/et_tel1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/et_rucc"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="11dp"
+                android:ems="10"
+                android:hint="Telefono 1"
+                android:inputType="phone"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/et_tel2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/et_tel1"
+                android:layout_marginTop="11dp"
+                android:ems="10"
+                android:hint="Telefono 2"
+                android:inputType="phone"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/et_tel4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/et_tel2"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:hint="Telefono 3"
+                android:inputType="phone"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/et_tel5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/et_tel4"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:hint="Número Celular"
+                android:inputType="phone"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/et_fechnac"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/et_tel5"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:editable="false"
+                android:ems="10"
+                android:hint="Fecha de Nacimiento o Fundación"
+                android:inputType="date"
+                android:singleLine="true"
+                android:textAlignment="center" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignStart="@+id/et_fechnac"
+                android:layout_below="@+id/et_fechnac"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical">
+
+                <Spinner
+                    android:id="@+id/sp_tipoo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/sp_sexoo"
+                    android:layout_below="@+id/et_fechnac"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="10dp" />
+
+                <Spinner
+                    android:id="@+id/sp_ciudado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/et_zono"
+                    android:layout_alignTop="@+id/sp_cateo"
+                    android:layout_marginBottom="5dp"
+                    android:textAlignment="center" />
+
+                <Spinner
+                    android:id="@+id/et_zono"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/sp_tipoo"
+                    android:layout_alignStart="@+id/sp_tipoo"
+                    android:layout_alignTop="@+id/sp_tipoo"
+                    android:layout_marginBottom="5dp"
+                    android:textAlignment="center" />
+
+                <Spinner
+                    android:id="@+id/sp_sexoo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/et_zono"
+                    android:layout_marginBottom="10dp"
+                    android:entries="@array/sexo" />
+
+                <Spinner
+                    android:id="@+id/sp_cateo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/btn_nextt"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/sp_sexoo"
+                    android:layout_marginBottom="10dp"
+                    android:entries="@array/cate"
+                    android:scrollIndicators="none"
+                    android:scrollbarAlwaysDrawHorizontalTrack="false"
+                    android:scrollbarAlwaysDrawVerticalTrack="false" />
+
+                <Button
+                    android:id="@+id/btn_nextt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/sp_ciudado"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/bordebotton"
+                    android:text="Siguiente" />
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+
+</FrameLayout>

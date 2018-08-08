@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10sp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:text="HACER PEDIDO"
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_green_light"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edtx_buscar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView7"
+            android:layout_marginTop="13dp"
+            android:layout_toStartOf="@+id/btn_buscar"
+            android:ems="10"
+            android:hint="Buscar Cliente RUC/CI"
+            android:inputType="number" />
+
+        <ImageButton
+            android:id="@+id/btn_buscar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/edtx_buscar"
+            app:srcCompat="@android:drawable/ic_menu_search" />
+
+
+        <RelativeLayout
+            android:id="@+id/rl_verificar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/btn_buscar"
+            android:background="@drawable/bordes_ped"
+            android:padding="20dp"
+            android:visibility="invisible"
+            tools:layout_editor_absoluteY="33dp">
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/btn_buscar"
+                android:layout_weight="1"
+                android:text="El Cliente Cumple con todas las Facturas Pagadas:"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:ignore="NotSibling" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/txt_factpag"
+                android:layout_weight="1"
+                android:text="Compras Realizadas:"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:ignore="NotSibling" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/txt_primcomp"
+                android:layout_weight="1"
+                android:text="Cupo Crediticio:"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:ignore="NotSibling" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/txt_cupo"
+                android:layout_weight="1"
+                android:text="Facturas Impagas:"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:ignore="NotSibling" />
+
+            <TextView
+                android:id="@+id/txt_factpag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView8"
+                android:layout_weight="1"
+                android:text="SI"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_primcomp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView2"
+                android:layout_weight="1"
+                android:text="0"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_cupo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView5"
+                android:layout_weight="1"
+                android:text="800"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_impagas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView6"
+                android:layout_weight="1"
+                android:text="0"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="false"
+            android:layout_below="@+id/rl_verificar"
+            android:visibility="invisible"
+            tools:layout_editor_absoluteY="139dp">
+
+            <TextView
+                android:id="@+id/tv_cumple"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/btn_buscar"
+                android:layout_weight="1"
+                android:text="No Cumple"
+                android:textAlignment="center"
+                android:textColor="@color/holo_Red"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:ignore="NotSibling" />
+
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="false"
+                android:layout_centerHorizontal="true"
+                android:backgroundTint="@android:color/holo_green_light"
+                android:drawableLeft="@drawable/ic_check_box_black_24dp"
+                android:text="Continuar" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:id="@+id/all_pb"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="1"
+        android:visibility="visible">
+
+        <ProgressBar
+            android:id="@+id/pb_nuevopro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:elevation="20dp"
+            android:indeterminate="true"
+            android:minHeight="150dp"
+            android:minWidth="150dp"
+            android:visibility="gone" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_pb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:alpha="0.4"
+            android:background="@color/Color_fondo"
+            android:visibility="invisible">
+
+        </android.support.v4.view.ViewPager>
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_behavior="@string/bottom_sheet_behavior">
+
+
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

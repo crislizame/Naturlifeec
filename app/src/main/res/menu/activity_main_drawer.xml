@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_camera"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="Inicio" />
+
+    </group>
+    <item android:title="Clientes">
+        <menu>
+            <item
+                android:id="@+id/add_cli"
+                android:icon="@drawable/ic_person_add_black_24dp"
+                android:title="Añadir Cliente" />
+            <item
+                android:id="@+id/bus_cli"
+                android:icon="@drawable/ic_perm_contact_calendar_black_24dp"
+                android:title="Buscar Cliente" />
+        </menu>
+    </item>
+    <item android:title="Productos">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_add_to_photos_black_24dp"
+                android:title="Agregar Producto" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_edit_black_24dp"
+                android:title="Editar Producto" />
+        </menu>
+    </item>
+    <item android:title="Pedidos">
+        <menu>
+            <item
+                android:id="@+id/nav_gallery"
+                android:icon="@drawable/ic_add_shopping_cart_black_24dp"
+                android:title="Hacer Pedido" />
+            <item
+                android:id="@+id/nav_slideshow"
+                android:icon="@drawable/ic_history_black_24dp"
+                android:title="Historial Pedidos" />
+            <item
+                android:id="@+id/nav_manage"
+                android:icon="@drawable/ic_monetization_on_black_24dp"
+                android:title="Metas" />
+        </menu>
+    </item>
+
+</menu>
