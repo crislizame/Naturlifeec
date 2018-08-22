@@ -294,6 +294,9 @@ public class AddClienteFragment extends Fragment implements View.OnClickListener
             case R.id.et_fechnac:
                 showDatePickerDialog();
                 break;
+            case R.id.btn_nextt:
+
+                break;
         }
     }
     private String twoDigits(int n) {
