@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Naturlife</string>
     <string name="enviar">Enviar Pedido</string>
-    <string name="toolbar_title">Contacts</string>
+    <string name="toolbar_title">Seleccione Productos</string>
     <string name="action_search">Search</string>
     <string name="search_hint">Type name…</string>
     <!-- Strings related to login -->
@@ -29,7 +29,26 @@
     <string-array name="sexo">
         <item>MASCULINO</item>
         <item>FEMENINO</item>
-
+    </string-array>
+    <string-array name="dias2">
+        <item>Día Entrega Pedido</item>
+        <item>Lunes</item>
+        <item>Martes</item>
+        <item>Miercoles</item>
+        <item>Jueves</item>
+        <item>Viernes</item>
+        <item>Sabado</item>
+        <item>Domingo</item>
+    </string-array>
+    <string-array name="dias">
+        <item>Día Visita</item>
+        <item>Lunes</item>
+        <item>Martes</item>
+        <item>Miercoles</item>
+        <item>Jueves</item>
+        <item>Viernes</item>
+        <item>Sabado</item>
+        <item>Domingo</item>
     </string-array>
     <string-array name="cate">
         <item>A</item>

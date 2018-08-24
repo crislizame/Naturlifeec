@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+
+    android:padding="10sp"
+    tools:context="net.jhonlizame.naturlife.activity.AddCliente2Activity"
+    tools:showIn="@layout/activity_add_cliente2">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/ed_EPedido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/ed_HVHasta2"
+                android:layout_alignBottom="@+id/ed_HVHasta2"
+                android:layout_marginEnd="0dp"
+                android:layout_marginStart="-120dp"
+                android:layout_toEndOf="@+id/ed_HVDesde"
+                android:ems="10"
+                android:hint="D. Pago"
+                android:inputType="time" />
+
+            <EditText
+                android:id="@+id/ed_dirFarmacia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/ed_correo"
+                android:layout_marginBottom="5dp"
+                android:ems="10"
+                android:hint="Direccion Farmacia"
+                android:inputType="textPostalAddress" />
+
+            <EditText
+                android:id="@+id/ed_HVHasta2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sp_DVisita"
+                android:layout_marginEnd="35dp"
+                android:layout_marginTop="8dp"
+                android:layout_toStartOf="@+id/ed_espCliente"
+                android:ems="10"
+                android:hint="H. Hasta"
+                android:inputType="time" />
+
+            <EditText
+                android:id="@+id/ed_dirConsultorio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/ed_dirFarmacia"
+                android:layout_marginBottom="5dp"
+                android:ems="10"
+                android:hint="Dirección Consultorio"
+                android:inputType="textPostalAddress" />
+
+            <EditText
+                android:id="@+id/ed_HVDesde"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/ed_EPedido"
+                android:layout_alignBottom="@+id/ed_EPedido"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginEnd="125dp"
+                android:layout_marginStart="138dp"
+                android:ems="10"
+                android:hint="H. Desde"
+                android:inputType="time" />
+
+            <EditText
+                android:id="@+id/ed_profClient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/textView17"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView17"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="9dp"
+                android:ems="10"
+                android:hint="Profesión Cliente"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="Paso 2"
+                android:textAlignment="textEnd"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/ed_obs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ed_HVDesde"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="11dp"
+                android:ems="10"
+                android:hint="Observación"
+                android:inputType="textMultiLine" />
+
+            <EditText
+                android:id="@+id/ed_correo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/ed_profClient"
+                android:layout_below="@+id/ed_profClient"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:ems="10"
+                android:hint="Correo Electronico"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/ed_espCliente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/textView17"
+                android:layout_alignTop="@+id/ed_profClient"
+                android:layout_marginStart="30dp"
+                android:ems="10"
+                android:hint="Especialidad Cliente"
+                android:inputType="textPersonName" />
+
+            <Spinner
+                android:id="@+id/sp_EntPedido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/sp_DVisita"
+                android:entries="@array/dias2"
+                android:layout_toEndOf="@+id/sp_DVisita" />
+
+            <EditText
+                android:id="@+id/ed_website"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ed_profClient"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_toEndOf="@+id/ed_correo"
+                android:ems="10"
+                android:hint="Website"
+                android:inputType="textPersonName" />
+
+            <Spinner
+                android:id="@+id/sp_DVisita"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/ed_correo"
+                android:layout_below="@+id/ed_dirConsultorio"
+                android:entries="@array/dias"
+                android:layout_marginTop="8dp" />
+        </RelativeLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

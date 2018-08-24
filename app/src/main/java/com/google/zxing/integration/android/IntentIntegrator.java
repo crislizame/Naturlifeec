@@ -23,7 +23,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 
-import net.grietainc.naturlife.fragment.ProductosFragment;
+import net.jhonlizame.naturlife.fragment.ProductosFragment;
 
 /**
  * <p>A utility class which helps ease integration with Barcode Scanner via {@link Intent}s. This is a simple

@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "net.grietainc.naturlife"
+        applicationId "net.jhonlizame.naturlife"
         minSdkVersion 19
         targetSdkVersion 26
         versionCode 2
