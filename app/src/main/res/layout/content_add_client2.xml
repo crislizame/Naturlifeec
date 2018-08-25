@@ -7,7 +7,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
 
     android:padding="10sp"
-    tools:context="net.jhonlizame.naturlife.activity.AddCliente2Activity"
+    tools:context="net.lizame.naturlife.activity.AddCliente2Activity"
     tools:showIn="@layout/activity_add_cliente2">
 
     <ScrollView

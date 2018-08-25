@@ -315,4 +315,5 @@
     <string name="title_activity_pedidopro">PedidoproActivity</string>
     <string name="title_activity_hacer_ped">HacerPedActivity</string>
     <string name="title_activity_enviar">EnviarActivity</string>
+    <string name="title_activity_vproductos_c">Productos</string>
 </resources>

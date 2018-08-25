@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="net.jhonlizame.naturlife.fragment.ProductosFragment">
+    tools:context="net.lizame.naturlife.fragment.ProductosFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
