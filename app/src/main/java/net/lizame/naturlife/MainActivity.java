@@ -58,6 +58,8 @@ public class MainActivity extends AppCompatActivity
     BuscarClienteFragment buscar = new BuscarClienteFragment();
     private MapView mapView;
     private GoogleMap gmap;
+    String tipo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,12 +67,39 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         session = new Session(getApplicationContext());
+        try{
 
         fm = getSupportFragmentManager();
         ft = fm.beginTransaction();
         ft.add(R.id.fragment_inicio,inicio);
         ft.commit();
+            tipo = getIntent().getStringExtra("tipo");
+            switch (tipo)
+            {
+                case "npedido":
+                    ft = fm.beginTransaction();
+                    ft.replace(R.id.fragment_inicio,vpedidos);
+                    ft.addToBackStack(null);
+                    ft.commit();
+                    break;
+                case "hpedido":
+                    ft = fm.beginTransaction();
+                    ft.replace(R.id.fragment_inicio,pedidos);
+                    ft.addToBackStack(null);
+                    ft.commit();
+                    break;
+                default:
+                    ft = fm.beginTransaction();
+                    ft.replace(R.id.fragment_inicio,inicio);
+                    ft.addToBackStack(null);
+                    ft.commit();
+                    break;
+            }
 
+        }catch(Exception e)
+        {
+
+        }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -166,6 +195,10 @@ createSimpleDialog().show();
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
+            ft = fm.beginTransaction();
+            ft.replace(R.id.fragment_inicio,inicio);
+            ft.addToBackStack(null);
+            ft.commit();
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
             ft = fm.beginTransaction();

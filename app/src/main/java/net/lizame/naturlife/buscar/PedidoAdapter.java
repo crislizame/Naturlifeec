@@ -2,7 +2,10 @@ package net.lizame.naturlife.buscar;
 
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,10 +16,21 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import net.lizame.naturlife.R;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
+import net.lizame.naturlife.R;
+import net.lizame.naturlife.core.core;
+
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by ravi on 16/11/17.
@@ -28,6 +42,7 @@ public class PedidoAdapter extends RecyclerView.Adapter<PedidoAdapter.MyViewHold
     private List<Productos> contactList;
     private List<Productos> contactListFiltered;
     private ContactsAdapterListener listener;
+    Bitmap valorconvertido;
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView name, phone,stock,sel;
@@ -128,13 +143,57 @@ public class PedidoAdapter extends RecyclerView.Adapter<PedidoAdapter.MyViewHold
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, final int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final Productos contact = contactListFiltered.get(position);
         holder.name.setText(contact.getTitle());
         holder.phone.setText(contact.getPrecio());
         holder.stock.setText(contact.getStock());
         holder.sel.setText(contact.getMsel());
-        holder.thumbnail.setImageBitmap(contact.getDrawableResource());
+        String urling = core.BASE_URL + "productos/obtenerimagen.php?lol="+contact.getcodigo();
+        RequestQueue queue4 = Volley.newRequestQueue(context);
+        urling = urling.replaceAll(" ", "%20");
+        final ArrayList<Productos> items = new ArrayList<>();
+        StringRequest stringRequest4 = new StringRequest(Request.Method.POST,urling,new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                byte[] imageBytes = baos.toByteArray();
+                imageBytes = Base64.decode(response, Base64.DEFAULT);
+                Bitmap decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+                valorconvertido = decodedImage;
+                holder.thumbnail.setImageBitmap(valorconvertido);
+
+
+               // Log.i("Success","
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //mTextView.setText("That didn't work!");
+
+              //  Log.i("Error",
+
+                error.printStackTrace();
+
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams()
+            {
+                final String bc_string = "";
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put("artcodigo", contact.getcodigo());
+
+
+
+                return params;
+            }
+
+        };
+
+        queue4.add(stringRequest4);
         holder.setOnClickListener();
 
 

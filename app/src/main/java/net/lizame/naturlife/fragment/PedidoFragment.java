@@ -230,6 +230,7 @@ public class PedidoFragment extends Fragment implements ItemAdapter.ItemListener
                                         public void onClick(View view) {
                                             Intent i = new Intent(getContext(), PedidoproActivity.class);
                                             startActivity(i);
+                                            getActivity().finish();
                                         }
                                     });
 

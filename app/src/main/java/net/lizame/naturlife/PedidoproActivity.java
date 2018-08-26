@@ -32,6 +32,7 @@ import net.lizame.naturlife.buscar.PedidoAdapter;
 import net.lizame.naturlife.buscar.Productos;
 import net.lizame.naturlife.core.Session;
 import net.lizame.naturlife.core.core;
+import net.lizame.naturlife.fragment.EnviarActivity;
 import net.lizame.naturlife.fragment.HacerPedActivity;
 
 import org.json.JSONArray;
@@ -110,13 +111,12 @@ public class PedidoproActivity extends AppCompatActivity implements  PedidoAdapt
 
                         for (int i = 0;i<ja.length();i++){
                             JSONObject json_data = ja.getJSONObject(i);
-                            String imagen = json_data.getString("imagen");
                             String titulo = json_data.getString("titulo");
                             String precio = json_data.getString("precio");
                             String stock = json_data.getString("stock");
                             String codigo = json_data.getString("code");
 
-                                items.add(new Productos(imagen, titulo,precio,stock,codigo,"0"));
+                                items.add(new Productos(getApplicationContext(), titulo,precio,stock,codigo,"0"));
 
                         }
                         pb.setVisibility(View.INVISIBLE);
@@ -243,10 +243,12 @@ public class PedidoproActivity extends AppCompatActivity implements  PedidoAdapt
                 Log.i("lol","esto es lo que es "+suma);
 
                 Intent intent = new Intent(PedidoproActivity.this, HacerPedActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
                 intent.putExtra("array", productores);
 
                 startActivity(intent);
-
+                finish();
             }else{
                 Toast.makeText(this,"No has seleccionado Productos",Toast.LENGTH_LONG).show();
             }
@@ -257,11 +259,21 @@ public class PedidoproActivity extends AppCompatActivity implements  PedidoAdapt
     }
 
     @Override
+    protected void onDestroy() {
+
+        super.onDestroy();
+    }
+
+    @Override
     public void onBackPressed() {
         // close search view on back button pressed
         if (!searchView.isIconified()) {
             searchView.setIconified(true);
             return;
+        }else{
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra("tipo", "hpedido");
+            startActivity(intent);
         }
         super.onBackPressed();
     }

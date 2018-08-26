@@ -36,7 +36,7 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
-
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyBGSzwi2n4rXvSt80fu8AC8k8v1BtE9NQk"/>
         <activity
             android:name=".LoginActivity"
             android:label="@string/app_name">
@@ -56,24 +56,29 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".PedidoproActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme2"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".fragment.HacerPedActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme2"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".fragment.EnviarActivity"
             android:label="@string/enviar"
-            android:theme="@style/AppTheme" />
-        <activity android:name=".activity.AddCliente2Activity" />
+            android:theme="@style/AppTheme2" />
+        <activity android:name=".activity.AddCliente2Activity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.VProductosCActivity"
             android:label="@string/title_activity_vproductos_c"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

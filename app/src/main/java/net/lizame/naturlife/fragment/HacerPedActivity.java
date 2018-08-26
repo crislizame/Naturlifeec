@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import net.lizame.naturlife.MainActivity;
 import net.lizame.naturlife.R;
 import net.lizame.naturlife.buscar.ConfirmarAdapter;
 import net.lizame.naturlife.buscar.pedidos;
@@ -74,6 +75,21 @@ Log.i("asd",""+all.size());
         Log.i("lasda",""+all);
 
     }
+    @Override
+    public void onBackPressed() {
+        // close search view on back button pressed
+
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra("tipo", "hpedido");
+            startActivity(intent);
+
+        super.onBackPressed();
+    }
+    @Override
+    protected void onDestroy() {
+
+        super.onDestroy();
+    }
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main3, menu);
 
@@ -97,7 +113,9 @@ Log.i("asd",""+all.size());
         if (id == R.id.action_send) {
 
             Intent intent = new Intent(HacerPedActivity.this, EnviarActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             intent.putExtra("array", productores);
+            finish();
 
             startActivity(intent);
         }

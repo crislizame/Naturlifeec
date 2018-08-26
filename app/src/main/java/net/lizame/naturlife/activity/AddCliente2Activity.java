@@ -102,7 +102,7 @@ public class AddCliente2Activity extends AppCompatActivity {
 
                     Toast.makeText(getApplicationContext(),response,Toast.LENGTH_LONG).show();
                     Log.i("Error","Todo Malon "+response);
-
+                AddCliente2Activity.this.finish();
                 }
             }, new Response.ErrorListener() {
                 @Override

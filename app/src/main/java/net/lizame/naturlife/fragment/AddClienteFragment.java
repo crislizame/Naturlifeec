@@ -295,6 +295,7 @@ public class AddClienteFragment extends Fragment implements View.OnClickListener
             case R.id.btn_nextt:
 
 
+
                 Intent intent = new Intent(getActivity(), AddCliente2Activity.class);
                 intent.putExtra("clinombre", et_razon.getText().toString());
                 intent.putExtra("cliruc", et_rucc.getText().toString());
@@ -310,6 +311,14 @@ public class AddClienteFragment extends Fragment implements View.OnClickListener
                 intent.putExtra("clifecnac", et_fechnac.getText().toString());
 
                 startActivity(intent);
+                et_razon.setText("");
+                et_rucc.setText("");
+                et_tel1.setText("");
+                et_tel2.setText("");
+                et_tel4.setText("");
+                et_tel5.setText("");
+                et_fechnac.setText("");
+
                 break;
         }
     }

@@ -1,5 +1,6 @@
 package net.lizame.naturlife.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -16,7 +17,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import net.lizame.naturlife.MainActivity;
 import net.lizame.naturlife.R;
+import net.lizame.naturlife.activity.VProductosCActivity;
 import net.lizame.naturlife.buscar.Productos;
 import net.lizame.naturlife.core.Session;
 import net.lizame.naturlife.core.core;
@@ -80,6 +83,11 @@ public class EnviarActivity extends AppCompatActivity implements View.OnClickLis
                 public void onResponse(String response) {
 
                     Toast.makeText(getApplicationContext(),response,Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(EnviarActivity.this, MainActivity.class);
+                    intent.putExtra("tipo", "npedido");
+                    startActivity(intent);
+                    EnviarActivity.this.finish();
+
                     Log.i("Error","Todo Malon "+response);
 
                 }

@@ -7,14 +7,26 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageSwitcher;
+import android.widget.ImageView;
+import android.widget.ViewSwitcher;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
+import net.lizame.naturlife.MainActivity;
 import net.lizame.naturlife.R;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,15 +36,16 @@ import net.lizame.naturlife.R;
  * Use the {@link InicioFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class InicioFragment extends Fragment implements OnMapReadyCallback{
+public class InicioFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private MapView mapView;
-    private GoogleMap gmap;
-    private static final String MAP_VIEW_BUNDLE_KEY = "MapViewBundleKey";
-
+    private ImageSwitcher imageSwitcher;
+    private int[] galeria = { R.drawable.por1, R.drawable.por2 };
+    private int posicion;
+    private static final int DURACION = 9000;
+    private Timer timer = null;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -75,27 +88,54 @@ public class InicioFragment extends Fragment implements OnMapReadyCallback{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_inicio, container, false);
-        Bundle mapViewBundle = null;
-        if (savedInstanceState != null) {
-            mapViewBundle = savedInstanceState.getBundle(MAP_VIEW_BUNDLE_KEY);
-        }
 
-        mapView = view.findViewById(R.id.mapView);
-        mapView.onCreate(mapViewBundle);
-        mapView.getMapAsync(this);
+        imageSwitcher = (ImageSwitcher) view.findViewById(R.id.imageSwitcher);
+        imageSwitcher.setFactory(new ViewSwitcher.ViewFactory()
+        {
+            public View makeView()
+            {
+                ImageView imageView = new ImageView(getContext());
+                imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+
+                return imageView;
+            }
+        });
+        Animation fadeIn = AnimationUtils.loadAnimation(getContext(), R.anim.fade_in);
+        Animation fadeOut = AnimationUtils.loadAnimation(getContext(), R.anim.fade_out);
+        imageSwitcher.setInAnimation(fadeIn);
+        imageSwitcher.setOutAnimation(fadeOut);
+
+            startSlider();
+
         return view;
     }
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
-        Bundle mapViewBundle = outState.getBundle(MAP_VIEW_BUNDLE_KEY);
-        if (mapViewBundle == null) {
-            mapViewBundle = new Bundle();
-            outState.putBundle(MAP_VIEW_BUNDLE_KEY, mapViewBundle);
-        }
 
-        mapView.onSaveInstanceState(mapViewBundle);
+    }
+    public void startSlider()
+    {
+        timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask()
+        {
+            public void run()
+            {
+                if(getActivity() != null) {
+                    getActivity().runOnUiThread(new Runnable()
+                {
+                    public void run()
+                    {
+                        imageSwitcher.setImageResource(galeria[posicion]);
+                        posicion++;
+                        if (posicion == galeria.length)
+                            posicion = 0;
+                    }
+                });
+            }
+            }
+        }, 0, DURACION);
     }
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -115,62 +155,6 @@ public class InicioFragment extends Fragment implements OnMapReadyCallback{
         }
     }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        mapView.onResume();
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        mapView.onStart();
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        mapView.onStop();
-    }
-    @Override
-    public void onPause() {
-        mapView.onPause();
-        super.onPause();
-    }
-    @Override
-    public void onDestroy() {
-        mapView.onDestroy();
-        super.onDestroy();
-    }
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-        mapView.onLowMemory();
-    }
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        gmap = googleMap;
-        gmap.setMinZoomPreference(6);
-        LatLng ny = new LatLng(-2.058050, -79.886568);
-        gmap.moveCamera(CameraUpdateFactory.newLatLng(ny));
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
