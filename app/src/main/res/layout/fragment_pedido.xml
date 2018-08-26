@@ -35,8 +35,8 @@
             android:layout_marginTop="13dp"
             android:layout_toStartOf="@+id/btn_buscar"
             android:ems="10"
-            android:hint="Buscar Cliente RUC/CI"
-            android:inputType="number" />
+            android:hint="Buscar Cliente RUC/CI o Nombre"
+            android:inputType="textPersonName" />
 
         <ImageButton
             android:id="@+id/btn_buscar"

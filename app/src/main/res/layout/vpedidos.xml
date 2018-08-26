@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -9,14 +10,14 @@
         android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         card_view:cardBackgroundColor="@color/cardview_shadow_end_color"
         card_view:cardCornerRadius="10dp"
-        card_view:cardElevation="5dp"
-        card_view:cardUseCompatPadding="true">
+        card_view:cardElevation="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -32,7 +33,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="5dp"
                     android:text="100"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textStyle="bold" />
@@ -50,7 +50,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:orientation="vertical"
@@ -63,9 +63,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="left|center_horizontal"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
                     android:text="Nombre Producto"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/fecha"
@@ -76,7 +76,8 @@
 
                     android:layout_marginTop="10dp"
                     android:text="Magnofarma"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textSize="14sp" />
 
             </LinearLayout>
         </LinearLayout>

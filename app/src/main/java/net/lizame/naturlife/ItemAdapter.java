@@ -53,14 +53,12 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         public ViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
-            imageView = (ImageView) itemView.findViewById(R.id.imageView);
             textView = (TextView) itemView.findViewById(R.id.textView);
             textView2 = (TextView) itemView.findViewById(R.id.textView4);
         }
 
         public void setData(Item item) {
             this.item = item;
-            imageView.setImageResource(item.getDrawableResource());
             textView.setText(titleize(item.getTitle().toLowerCase()));
             textView2.setText(item.getRuc());
         }

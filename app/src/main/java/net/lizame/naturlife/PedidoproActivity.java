@@ -77,8 +77,8 @@ public class PedidoproActivity extends AppCompatActivity implements  PedidoAdapt
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
-       // glm = new GridLayoutManager(this, 2);
-        //recyclerView.setLayoutManager(glm);
+        glm = new GridLayoutManager(this, 2);
+        recyclerView.setLayoutManager(glm);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
         pb.setVisibility(View.VISIBLE);
