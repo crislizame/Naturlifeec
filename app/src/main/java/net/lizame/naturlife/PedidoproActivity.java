@@ -30,6 +30,7 @@ import com.android.volley.toolbox.Volley;
 
 import net.lizame.naturlife.buscar.PedidoAdapter;
 import net.lizame.naturlife.buscar.Productos;
+import net.lizame.naturlife.core.DetectNet;
 import net.lizame.naturlife.core.Session;
 import net.lizame.naturlife.core.core;
 import net.lizame.naturlife.fragment.EnviarActivity;
@@ -55,7 +56,7 @@ public class PedidoproActivity extends AppCompatActivity implements  PedidoAdapt
     public ArrayList<String> productores;
     private ProgressBar pb;
     private ViewPager vp;
-
+DetectNet dn;
     Session session;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +66,10 @@ public class PedidoproActivity extends AppCompatActivity implements  PedidoAdapt
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.toolbar_title);
+        dn = new DetectNet(getApplicationContext(),this);
+
+        dn.isNetDisponible();
+        dn.isOnlineNet();
         pb = findViewById(R.id.pb_nuevopro);
         vp = findViewById(R.id.vp_pb);
         recyclerView = findViewById(R.id.recycler_view);
@@ -219,7 +224,8 @@ public class PedidoproActivity extends AppCompatActivity implements  PedidoAdapt
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
+        dn.isNetDisponible();
+        dn.isOnlineNet();
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_search) {
             return true;

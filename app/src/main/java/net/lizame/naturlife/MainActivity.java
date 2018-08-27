@@ -18,11 +18,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 
+import net.lizame.naturlife.core.DetectNet;
 import net.lizame.naturlife.core.Session;
 import net.lizame.naturlife.fragment.AddClienteFragment;
 import net.lizame.naturlife.fragment.BuscarClienteFragment;
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity
     private TextView usrcargotexto_txt;
     private Context context;
     public Session session;
+     DetectNet dn;
     public FragmentManager fm;
     public FragmentTransaction ft;
     private static final String MAP_VIEW_BUNDLE_KEY = "MapViewBundleKey";
@@ -66,40 +69,47 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        session = new Session(getApplicationContext());
-        try{
-
         fm = getSupportFragmentManager();
         ft = fm.beginTransaction();
         ft.add(R.id.fragment_inicio,inicio);
         ft.commit();
-            tipo = getIntent().getStringExtra("tipo");
-            switch (tipo)
+        session = new Session(getApplicationContext());
+        toolbar.setSubtitle("Bienvenido "+ucFirst(session.getusername()));
+
+            try{
+                dn = new DetectNet(getApplicationContext(),this);
+
+                dn.isNetDisponible();
+                dn.isOnlineNet();
+                tipo = getIntent().getStringExtra("tipo");
+                switch (tipo)
+                {
+                    case "npedido":
+                        ft = fm.beginTransaction();
+                        ft.replace(R.id.fragment_inicio,vpedidos);
+                        ft.addToBackStack(null);
+                        ft.commit();
+                        break;
+                    case "hpedido":
+                        ft = fm.beginTransaction();
+                        ft.replace(R.id.fragment_inicio,pedidos);
+                        ft.addToBackStack(null);
+                        ft.commit();
+                        break;
+                    default:
+                        ft = fm.beginTransaction();
+                        ft.replace(R.id.fragment_inicio,inicio);
+                        ft.addToBackStack(null);
+                        ft.commit();
+                        break;
+                }
+
+            }catch(Exception e)
             {
-                case "npedido":
-                    ft = fm.beginTransaction();
-                    ft.replace(R.id.fragment_inicio,vpedidos);
-                    ft.addToBackStack(null);
-                    ft.commit();
-                    break;
-                case "hpedido":
-                    ft = fm.beginTransaction();
-                    ft.replace(R.id.fragment_inicio,pedidos);
-                    ft.addToBackStack(null);
-                    ft.commit();
-                    break;
-                default:
-                    ft = fm.beginTransaction();
-                    ft.replace(R.id.fragment_inicio,inicio);
-                    ft.addToBackStack(null);
-                    ft.commit();
-                    break;
+
             }
 
-        }catch(Exception e)
-        {
 
-        }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -193,7 +203,8 @@ createSimpleDialog().show();
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view Item clicks here.
         int id = item.getItemId();
-
+        dn.isNetDisponible();
+        dn.isOnlineNet();
         if (id == R.id.nav_camera) {
             ft = fm.beginTransaction();
             ft.replace(R.id.fragment_inicio,inicio);

@@ -154,7 +154,7 @@ public class VerPedidosFragment extends Fragment implements View.OnClickListener
 
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        Toast.makeText(getContext(),"¡No hay Articulos!",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(),"¡No hay Pedidos!",Toast.LENGTH_LONG).show();
                         pb.setVisibility(View.INVISIBLE);
                         vp.setVisibility(View.INVISIBLE);
                     }
@@ -165,7 +165,7 @@ public class VerPedidosFragment extends Fragment implements View.OnClickListener
                 }
                 if(response.equals("null"))
                 {
-                    Toast.makeText(getContext(),"¡No hay Articulos!",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(),"¡No hay Pedidos!",Toast.LENGTH_LONG).show();
                     pb.setVisibility(View.INVISIBLE);
                     vp.setVisibility(View.INVISIBLE);
 

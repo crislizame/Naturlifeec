@@ -30,6 +30,7 @@ import net.lizame.naturlife.R;
 import net.lizame.naturlife.buscar.Productos;
 import net.lizame.naturlife.buscar.VProductos;
 import net.lizame.naturlife.buscar.VProductosAdapter;
+import net.lizame.naturlife.core.DetectNet;
 import net.lizame.naturlife.core.core;
 
 import org.json.JSONArray;
@@ -50,7 +51,7 @@ public class VProductosCActivity extends AppCompatActivity implements View.OnCli
     private ViewPager vp;
     String tipo;
     private SearchView searchView;
-
+DetectNet dn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +62,10 @@ public class VProductosCActivity extends AppCompatActivity implements View.OnCli
         pb = findViewById(R.id.pb_nuevopro);
         vp = findViewById(R.id.vp_pb);
         tipo = getIntent().getStringExtra("tipo");
+        dn = new DetectNet(getApplicationContext(),this);
 
+        dn.isNetDisponible();
+        dn.isOnlineNet();
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         recyclerView.setHasFixedSize(true);
         data = new ArrayList<>();

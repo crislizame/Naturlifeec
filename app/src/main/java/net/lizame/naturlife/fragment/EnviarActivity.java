@@ -2,11 +2,13 @@ package net.lizame.naturlife.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +23,7 @@ import net.lizame.naturlife.MainActivity;
 import net.lizame.naturlife.R;
 import net.lizame.naturlife.activity.VProductosCActivity;
 import net.lizame.naturlife.buscar.Productos;
+import net.lizame.naturlife.core.DetectNet;
 import net.lizame.naturlife.core.Session;
 import net.lizame.naturlife.core.core;
 
@@ -33,6 +36,9 @@ public class EnviarActivity extends AppCompatActivity implements View.OnClickLis
     TextView subtotal,iva,total;
     Button enviar;
     float Suma = 0;
+    private ProgressBar pb;
+    private ViewPager vp;
+DetectNet dn;
     Session session;
     ArrayList<String> all;
     @Override
@@ -42,8 +48,13 @@ public class EnviarActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_enviar);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        all = (ArrayList<String>) getIntent().getExtras().getSerializable("array");
+        dn = new DetectNet(getApplicationContext(),this);
 
+        dn.isNetDisponible();
+        dn.isOnlineNet();
+        all = (ArrayList<String>) getIntent().getExtras().getSerializable("array");
+        pb = findViewById(R.id.pb_nuevopro);
+        vp = findViewById(R.id.vp_pb);
         for (int i = 0;i < Integer.parseInt(String.valueOf(all.size())) ;){
             float Mult = 0;
             String aa = all.get(i);
@@ -63,6 +74,8 @@ public class EnviarActivity extends AppCompatActivity implements View.OnClickLis
         total = findViewById(R.id.tv_total);
         enviar = findViewById(R.id.btn_enviar);
         enviar.setOnClickListener(this);
+        enviar.setVisibility(View.VISIBLE);
+
         DecimalFormat df = new DecimalFormat("0.00");
 
         subtotal.setText(String.valueOf(df.format(Suma)));
@@ -71,8 +84,24 @@ public class EnviarActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(EnviarActivity.this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        intent.putExtra("tipo", "hpedido");
+        startActivity(intent);
+        super.onBackPressed();
+    }
+
+    @Override
     public void onClick(View view) {
+
+        dn.isNetDisponible();
+        dn.isOnlineNet();
         if(view.getId() == R.id.btn_enviar){
+            enviar.setVisibility(View.INVISIBLE);
+            pb.setVisibility(View.VISIBLE);
+            vp.setVisibility(View.VISIBLE);
+
             final String idcli = session.getclicodigo();
             String urling = core.BASE_URL + "pedidos/npedido_ws.php?lol=listo";
             RequestQueue queue4 = Volley.newRequestQueue(getApplicationContext());
@@ -84,8 +113,12 @@ public class EnviarActivity extends AppCompatActivity implements View.OnClickLis
 
                     Toast.makeText(getApplicationContext(),response,Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(EnviarActivity.this, MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     intent.putExtra("tipo", "npedido");
                     startActivity(intent);
+                    pb.setVisibility(View.INVISIBLE);
+                    vp.setVisibility(View.INVISIBLE);
+
                     EnviarActivity.this.finish();
 
                     Log.i("Error","Todo Malon "+response);

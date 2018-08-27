@@ -21,6 +21,7 @@ import com.android.volley.toolbox.Volley;
 
 import net.lizame.naturlife.R;
 import net.lizame.naturlife.buscar.Productos;
+import net.lizame.naturlife.core.DetectNet;
 import net.lizame.naturlife.core.core;
 
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AddCliente2Activity extends AppCompatActivity {
-
+DetectNet dn;
     private MenuItem send;
     EditText ed_EPedido,ed_dirFarmacia,ed_HVHasta2,ed_dirConsultorio,
             ed_HVDesde,ed_profClient,ed_obs,ed_correo,ed_espCliente,ed_website;
@@ -41,7 +42,10 @@ public class AddCliente2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_add_cliente2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        dn = new DetectNet(getApplicationContext(),this);
 
+        dn.isNetDisponible();
+        dn.isOnlineNet();
 
 
     }
@@ -64,6 +68,8 @@ public class AddCliente2Activity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+        dn.isNetDisponible();
+        dn.isOnlineNet();
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_send) {
             clinombre = getIntent().getStringExtra("clinombre");
