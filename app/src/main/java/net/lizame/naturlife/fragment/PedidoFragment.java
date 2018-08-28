@@ -200,13 +200,18 @@ public class PedidoFragment extends Fragment implements ItemAdapter.ItemListener
 
                                 if(pagadas.equals("SI")){
                                     pg.setText(pagadas);
+                                    pg.setTextColor(Color.parseColor("#FF669900"));
+
                                 }else{
                                     pg.setText(pagadas);
                                     pg.setTextColor(Color.parseColor("#cc0000"));
+
                                     validador = 0;
                                 }
                                 if(impagas.equals("0")){
                                     ip.setText(impagas);
+                                    ip.setTextColor(Color.parseColor("#FF669900"));
+
                                 }else{
                                     ip.setText(impagas);
                                     ip.setTextColor(Color.parseColor("#cc0000"));
@@ -214,15 +219,18 @@ public class PedidoFragment extends Fragment implements ItemAdapter.ItemListener
                                 }
                                 if(cupo > 0){
                                     cup.setText(cupo.toString());
-
+                                    cup.setTextColor(Color.parseColor("#FF669900"));
                                 }else{
                                     cup.setText(cupo.toString());
                                     cup.setTextColor(Color.parseColor("#cc0000"));
+
                                     validador = 0;
                                 }
 
                                 if(validador == 1){
                                     rl_next.setVisibility(View.VISIBLE);
+                                    btnnext.setVisibility(View.VISIBLE);
+
                                     cumple.setVisibility(View.INVISIBLE);
                                     session.setclicodigo(codigoguardado);
                                     btnnext.setOnClickListener(new View.OnClickListener() {
@@ -240,6 +248,8 @@ public class PedidoFragment extends Fragment implements ItemAdapter.ItemListener
                                     rl_next.setVisibility(View.VISIBLE);
                                     cumple.setText("El Cliente "+item.getTitle()+" no cumple los requisitos.");
                                     cumple.setVisibility(View.VISIBLE);
+                                    validador = 1;
+
                                 }
                                 rl_verificar.setVisibility(View.VISIBLE);
                             } catch (JSONException e) {

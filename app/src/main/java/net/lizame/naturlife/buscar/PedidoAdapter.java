@@ -42,6 +42,7 @@ public class PedidoAdapter extends RecyclerView.Adapter<PedidoAdapter.MyViewHold
     private List<Productos> contactList;
     private List<Productos> contactListFiltered;
     private ContactsAdapterListener listener;
+    Map<String,Bitmap> myMap= new HashMap<>();
     Bitmap valorconvertido;
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -59,7 +60,6 @@ public class PedidoAdapter extends RecyclerView.Adapter<PedidoAdapter.MyViewHold
             btndel = view.findViewById(R.id.btn_delete);
             sel = view.findViewById(R.id.et_stock);
             btn_12 = view.findViewById(R.id.btn_12);
-
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -149,51 +149,59 @@ public class PedidoAdapter extends RecyclerView.Adapter<PedidoAdapter.MyViewHold
         holder.phone.setText(contact.getPrecio());
         holder.stock.setText(contact.getStock());
         holder.sel.setText(contact.getMsel());
-        String urling = core.BASE_URL + "productos/obtenerimagen.php?lol="+contact.getcodigo();
-        RequestQueue queue4 = Volley.newRequestQueue(context);
-        urling = urling.replaceAll(" ", "%20");
-        final ArrayList<Productos> items = new ArrayList<>();
-        StringRequest stringRequest4 = new StringRequest(Request.Method.POST,urling,new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
+Log.i("Lista",""+myMap.containsKey(contact.getcodigo()));
+        if(myMap.containsKey(contact.getcodigo())){
+            holder.thumbnail.setImageBitmap(myMap.get(contact.getcodigo()));
 
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                byte[] imageBytes = baos.toByteArray();
-                imageBytes = Base64.decode(response, Base64.DEFAULT);
-                Bitmap decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
-                valorconvertido = decodedImage;
-                holder.thumbnail.setImageBitmap(valorconvertido);
+        }else{
+            String urling = core.BASE_URL + "productos/obtenerimagen.php?lol="+contact.getcodigo();
+            RequestQueue queue4 = Volley.newRequestQueue(context);
+            urling = urling.replaceAll(" ", "%20");
+            final ArrayList<Productos> items = new ArrayList<>();
+            StringRequest stringRequest4 = new StringRequest(Request.Method.POST,urling,new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    byte[] imageBytes = baos.toByteArray();
+                    imageBytes = Base64.decode(response, Base64.DEFAULT);
+                    Bitmap decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+                    valorconvertido = decodedImage;
+                    myMap.put(contact.getcodigo(),valorconvertido);
+                    holder.thumbnail.setImageBitmap(valorconvertido);
+
+                    // Log.i("Success","
+
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    //mTextView.setText("That didn't work!");
+
+                    //  Log.i("Error",
+myMap.remove(contact.getcodigo());
+                    error.printStackTrace();
+
+                }
+            }){
+                @Override
+                protected Map<String, String> getParams()
+                {
+                    final String bc_string = "";
+                    Map<String, String>  params = new HashMap<String, String>();
+                    params.put("artcodigo", contact.getcodigo());
 
 
-               // Log.i("Success","
 
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                //mTextView.setText("That didn't work!");
+                    return params;
+                }
 
-              //  Log.i("Error",
+            };
 
-                error.printStackTrace();
-
-            }
-        }){
-            @Override
-            protected Map<String, String> getParams()
-            {
-                final String bc_string = "";
-                Map<String, String>  params = new HashMap<String, String>();
-                params.put("artcodigo", contact.getcodigo());
+            queue4.add(stringRequest4);
+        }
 
 
-
-                return params;
-            }
-
-        };
-
-        queue4.add(stringRequest4);
         holder.setOnClickListener();
 
 
