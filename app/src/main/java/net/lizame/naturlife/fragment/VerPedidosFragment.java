@@ -111,6 +111,7 @@ public class VerPedidosFragment extends Fragment implements View.OnClickListener
         data = new ArrayList<>();
         session = new Session(getActivity());
         layoutManager = new LinearLayoutManager(getActivity());
+
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         adapter = new VerPedidosAdapter(getContext(),data);

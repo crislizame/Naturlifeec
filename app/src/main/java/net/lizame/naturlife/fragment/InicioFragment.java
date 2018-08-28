@@ -42,7 +42,7 @@ public class InicioFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private ImageSwitcher imageSwitcher;
-    private int[] galeria = { R.drawable.por1, R.drawable.por2 };
+    private int[] galeria = { R.drawable.por1, R.drawable.por2, R.drawable.por3 };
     private int posicion;
     private static final int DURACION = 9000;
     private Timer timer = null;

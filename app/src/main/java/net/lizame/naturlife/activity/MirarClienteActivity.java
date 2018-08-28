@@ -46,6 +46,7 @@ public class MirarClienteActivity extends AppCompatActivity {
     private ProgressBar pb;
     private ViewPager vp;
     Session session;
+    String nombrex;
     RecyclerView.LayoutManager lm;
     public List<VProductos> contactList;
     private MirarPed mAdapter;
@@ -57,6 +58,8 @@ public class MirarClienteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mirar_cliente);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        nombrex = getIntent().getStringExtra("nombrex");
+        toolbar.setSubtitle(nombrex);
         pb = findViewById(R.id.pb_nuevopro);
         vp = findViewById(R.id.vp_pb);
         tv_ruc = findViewById(R.id.tv_ruc);
@@ -90,7 +93,7 @@ public class MirarClienteActivity extends AppCompatActivity {
                        /* Log.i("sizejson","a"+ja.length());
                         Log.i("sizejson2",""+json_data.getString("clinombre"));
                         Log.i("sizejson3",""+json_data2.getString("clinombre"));*/
-String ciudad = "",ruccito = "",zona = "",cupo = "";
+String ciudad = "",ruccito = "",zona = "",cupo = "",nombrex;
 
                         for (int i = 0;i<ja.length();i++){
                             JSONObject json_data = ja.getJSONObject(i);

@@ -328,7 +328,9 @@ public class BuscarClienteFragment extends Fragment implements ItemAdapter.ItemL
                 session = new Session(getActivity());
 
                 session.setclicodigo(codigoguardado);
+
                 Intent i = new Intent(getContext(), MirarClienteActivity.class);
+                i.putExtra("nombrex",item.getTitle());
                 startActivity(i);
             Log.i("Codigo",""+codigoguardado);
             }
