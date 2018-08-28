@@ -51,6 +51,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -148,6 +149,8 @@ public class ProductosFragment extends Fragment implements AdapterView.OnItemSel
         addProducto.setOnClickListener(this);
         btn_ingproducto = view.findViewById(R.id.btn_ingproducto);
         btn_ingproducto.setOnClickListener(this);
+        btn_ingproducto.setVisibility(View.VISIBLE);
+
         new Thread(new Runnable() {
             public void run() {
                 RequestQueue queue = Volley.newRequestQueue(getContext());
@@ -349,7 +352,7 @@ public class ProductosFragment extends Fragment implements AdapterView.OnItemSel
                 break;
             case R.id.btn_ingproducto:
                 Log.i("aasa","Presionaste Ingresar");
-
+                btn_ingproducto.setVisibility(View.INVISIBLE);
                 IngresarProducto();
                 break;
             case R.id.btn_scan:

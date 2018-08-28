@@ -316,4 +316,5 @@
     <string name="title_activity_hacer_ped">HacerPedActivity</string>
     <string name="title_activity_enviar">EnviarActivity</string>
     <string name="title_activity_vproductos_c">Productos</string>
+    <string name="title_activity_mirar_cliente">Ver Datos Cliente</string>
 </resources>

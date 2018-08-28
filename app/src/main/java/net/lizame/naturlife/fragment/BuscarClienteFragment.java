@@ -2,6 +2,7 @@ package net.lizame.naturlife.fragment;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -31,8 +32,11 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import net.lizame.naturlife.ItemAdapter;
+import net.lizame.naturlife.PedidoproActivity;
 import net.lizame.naturlife.R;
+import net.lizame.naturlife.activity.MirarClienteActivity;
 import net.lizame.naturlife.buscar.Item;
+import net.lizame.naturlife.core.Session;
 import net.lizame.naturlife.core.core;
 
 import org.json.JSONArray;
@@ -68,7 +72,8 @@ public class BuscarClienteFragment extends Fragment implements ItemAdapter.ItemL
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    String codigoguardado;
+    Session session;
     private OnFragmentInteractionListener mListener;
 
     public BuscarClienteFragment() {
@@ -307,7 +312,6 @@ public class BuscarClienteFragment extends Fragment implements ItemAdapter.ItemL
         if (behavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
             behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
         }
-      //  session = new Session(getActivity());
 
         mBottomSheetDialog = new BottomSheetDialog(getContext());
         View view = getLayoutInflater().inflate(R.layout.sheet, null);
@@ -320,8 +324,13 @@ public class BuscarClienteFragment extends Fragment implements ItemAdapter.ItemL
                 if (mBottomSheetDialog != null) {
                     mBottomSheetDialog.dismiss();
                 }
-               // codigoguardado = item.getCodigo();
+                codigoguardado = item.getCodigo();
+                session = new Session(getActivity());
 
+                session.setclicodigo(codigoguardado);
+                Intent i = new Intent(getContext(), MirarClienteActivity.class);
+                startActivity(i);
+            Log.i("Codigo",""+codigoguardado);
             }
         }));
         mBottomSheetDialog.setContentView(view);
@@ -443,6 +452,8 @@ public class BuscarClienteFragment extends Fragment implements ItemAdapter.ItemL
     @Override
     public void onItemClick(Item item) {
         behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+
+
 
     }
 
