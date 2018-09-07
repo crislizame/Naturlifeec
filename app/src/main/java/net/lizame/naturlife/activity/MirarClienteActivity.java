@@ -93,14 +93,14 @@ public class MirarClienteActivity extends AppCompatActivity {
                        /* Log.i("sizejson","a"+ja.length());
                         Log.i("sizejson2",""+json_data.getString("clinombre"));
                         Log.i("sizejson3",""+json_data2.getString("clinombre"));*/
-String ciudad = "",ruccito = "",zona = "",cupo = "",nombrex;
+                        String ciudad = "",ruccito = "",zona = "",cupo = "",nombrex;
 
                         for (int i = 0;i<ja.length();i++){
                             JSONObject json_data = ja.getJSONObject(i);
-                             ciudad = json_data.getString("ciudad");
-                             ruccito = json_data.getString("cliruc");
-                             zona = json_data.getString("zona");
-                             cupo = json_data.getString("cupo");
+                            ciudad = json_data.getString("ciudad");
+                            ruccito = json_data.getString("cliruc");
+                            zona = json_data.getString("zona");
+                            cupo = json_data.getString("cupo");
                             String pednumped = json_data.getString("pednumped");
                             String fechped = json_data.getString("fpedido");
                             String precio = json_data.getString("precio");
